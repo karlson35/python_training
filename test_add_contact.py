@@ -16,13 +16,20 @@ class UntitledTestCase(unittest.TestCase):
     def test_add_contact(self):
         wd = self.wd
         self.login(wd)
-        self.create_contact(wd, Contact(firstname="Igor2", middlename="Nikolaev2", lastname="sdasd", nickname="asdasdasfasd",
+        self.create_contact(wd, Contact(firstname="Igor", middlename="Nikolaev", lastname="sdasd", nickname="asdasdasfasd",
                             title="title", company="company", address="address",
                             tel_home="tel_home", tel_mobile="tel_mobile", tel_work="tel_work", tel_fax="tel_fax",
                             email1="email1", email2="email2", email3="email3", homepage="homepage",
-                            bday="8", bmonth="June", byear="1985", aday="9", amonth="July", ayear="2005",
+                            bday="12", bmonth="August", byear="1983", aday="14", amonth="October", ayear="2004",
                             group="[none]", address2="seconadary_address", phone2="secondary_phone",
                             notes="notes"))
+        self.open_home_page(wd)
+        self.logout(wd)
+
+    def test_add_empty_contact(self):
+        wd = self.wd
+        self.login(wd)
+        self.create_emty_contact(wd)
         self.open_home_page(wd)
         self.logout(wd)
 
@@ -31,6 +38,10 @@ class UntitledTestCase(unittest.TestCase):
 
     def open_home_page(self, wd):
         wd.find_element_by_link_text("home page").click()
+
+    def create_emty_contact(self, wd):
+        wd.find_element_by_link_text("add new").click()
+        wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
     def create_contact(self, wd, contact):
         # create contact
