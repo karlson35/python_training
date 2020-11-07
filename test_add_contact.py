@@ -23,25 +23,24 @@ class UntitledTestCase(unittest.TestCase):
                             bday="12", bmonth="August", byear="1983", aday="14", amonth="October", ayear="2004",
                             group="[none]", address2="seconadary_address", phone2="secondary_phone",
                             notes="notes"))
-        self.open_home_page(wd)
         self.logout(wd)
 
     def test_add_empty_contact(self):
         wd = self.wd
         self.login(wd)
         self.create_emty_contact(wd)
-        self.open_home_page(wd)
         self.logout(wd)
 
     def logout(self, wd):
         wd.find_element_by_link_text("Logout").click()
 
-    def open_home_page(self, wd):
+    def return_to_home_page(self, wd):
         wd.find_element_by_link_text("home page").click()
 
     def create_emty_contact(self, wd):
         wd.find_element_by_link_text("add new").click()
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
+        self.return_to_home_page(wd)
 
     def create_contact(self, wd, contact):
         # create contact
@@ -139,6 +138,8 @@ class UntitledTestCase(unittest.TestCase):
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.notes)
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
+
+        self.return_to_home_page(wd)
 
     def login(self, wd):
         wd.get("http://localhost/addressbook/")
