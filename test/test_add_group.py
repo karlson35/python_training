@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import pytest
-from group import Group
-from application import Application
+from model.group import Group
+from fixture.application import Application
 
 
 @pytest.fixture
@@ -23,5 +23,5 @@ def test_add_empty_group(app):
     app.logout()
 
 
-if __name__ == "__main__":
-    pytest.main()
+#if __name__ == "__main__":
+#    pytest.main()
