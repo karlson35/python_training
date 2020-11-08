@@ -8,7 +8,7 @@ from selenium.common.exceptions import NoSuchElementException
 class Application:
     def __init__(self):
         self.wd = webdriver.Firefox()
-        self.wd.implicitly_wait(30)
+        self.wd.implicitly_wait(10)
 
     def login(self, username, password):
         wd = self.wd
@@ -53,19 +53,6 @@ class Application:
         wd = self.wd
         wd.find_element_by_link_text("groups").click()
 
-    def is_element_present(self, how, what):
-        try:
-            self.wd.find_element(by=how, value=what)
-        except NoSuchElementException as e:
-            return False
-        return True
-
-    def is_alert_present(self):
-        try:
-            self.wd.switch_to_alert()
-        except NoAlertPresentException as e:
-            return False
-        return True
-
     def destroy(self):
         self.wd.quit()
+
