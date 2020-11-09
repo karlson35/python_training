@@ -1,4 +1,5 @@
 __author__ = 'Igor Nikolaev'
+from selenium.common.exceptions import NoSuchElementException
 
 
 class SessionHelper:
