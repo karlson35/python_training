@@ -24,6 +24,7 @@ class SessionHelper:
         wd = self.app.wd
         if self.is_logged_in():
             self.logout()
+            wd.find_element_by_name("user")
 
     def is_logged_in(self):
         wd = self.app.wd
