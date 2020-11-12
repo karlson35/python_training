@@ -3,6 +3,8 @@ from model.contact import Contact
 
 
 def test_modify_first_contact(app):
+    if app.contact.count() == 0:
+        app.contact.create_empty()
     app.contact.modify_first_contact(Contact(firstname="Vasya", middlename="Pupkin", lastname="sdasd", nickname="vasyan007",
                        title="title", company="company", address="address",
                        tel_home="tel_home", tel_mobile="tel_mobile", tel_work="tel_work", tel_fax="tel_fax",
