@@ -1,5 +1,7 @@
 __author__ = 'Igor Nikolaev'
+
 from selenium.webdriver.support.ui import Select
+from model.contact import Contact
 
 
 class ContactHelper:
@@ -27,7 +29,7 @@ class ContactHelper:
         wd.find_element_by_name("title").click()
         wd.find_element_by_name("title").clear()
         wd.find_element_by_name("title").send_keys(contact.title)
-        #wd.find_element_by_name("theform").click()
+        # wd.find_element_by_name("theform").click()
         wd.find_element_by_name("company").click()
         wd.find_element_by_name("company").clear()
         wd.find_element_by_name("company").send_keys(contact.company)
@@ -64,16 +66,16 @@ class ContactHelper:
         Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.aday)
         wd.find_element_by_xpath("(//option[@value=" + contact.aday + "])[2]").click()
         # Понятно, что дело в регистре contact.amonth, как починить не понятно, пока убираю
-        #wd.find_element_by_name("amonth").click()
-        #Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
-        #wd.find_element_by_xpath("(//option[@value='" + contact.amonth + "'])[2]").click()
+        # wd.find_element_by_name("amonth").click()
+        # Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
+        # wd.find_element_by_xpath("(//option[@value='" + contact.amonth + "'])[2]").click()
         wd.find_element_by_name("ayear").click()
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys(contact.ayear)
         # Выбор группы всё руинит, пока убираю
-        #Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.group)
+        # Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.group)
         # разобраться с этим
-        #wd.find_element_by_xpath("//option[@value='[none]']").click()
+        # wd.find_element_by_xpath("//option[@value='[none]']").click()
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
         wd.find_element_by_name("address2").send_keys(contact.address2)
@@ -91,6 +93,7 @@ class ContactHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
+        self.return_to_home_page()
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to_alert().accept()
@@ -112,3 +115,15 @@ class ContactHelper:
         wd = self.app.wd
         self.return_to_home_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.return_to_home_page()
+        contacts = []
+        for element in wd.find_elements_by_name("entry"):
+            text = element.find_elements_by_tag_name("td")
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            # for debug
+            # print(id+" "+text[2].text+" "+text[1].text)
+            contacts.append(Contact(firstname=text[2].text, lastname=text[1].text, id=id))
+        return contacts
