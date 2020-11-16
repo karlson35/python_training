@@ -97,6 +97,7 @@ class ContactHelper:
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to_alert().accept()
+        wd.find_elements_by_xpath("//*[contains(text(), 'Record successful deleted')]")
         self.return_to_home_page()
 
     def modify_first_contact(self, contact):
