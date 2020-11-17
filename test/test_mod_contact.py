@@ -3,7 +3,7 @@ from model.contact import Contact
 from random import randrange
 
 
-def test_modify_first_contact(app):
+def test_modify_some_contact(app):
     if app.contact.count() == 0:
         app.contact.create_empty()
     contact = Contact(firstname="Vasya", middlename="Pupkin", lastname="sdasd", nickname="vasyan007",

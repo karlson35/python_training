@@ -30,7 +30,6 @@ class ContactHelper:
         wd.find_element_by_name("title").click()
         wd.find_element_by_name("title").clear()
         wd.find_element_by_name("title").send_keys(contact.title)
-        # wd.find_element_by_name("theform").click()
         wd.find_element_by_name("company").click()
         wd.find_element_by_name("company").clear()
         wd.find_element_by_name("company").send_keys(contact.company)
@@ -73,10 +72,9 @@ class ContactHelper:
         wd.find_element_by_name("ayear").click()
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys(contact.ayear)
-        # Выбор группы всё руинит, пока убираю
-        # Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.group)
-        # разобраться с этим
-        # wd.find_element_by_xpath("//option[@value='[none]']").click()
+        if self.check_exists_by_name("new_group"):
+            Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.group)
+            wd.find_element_by_xpath("//option[@value='[none]']")
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
         wd.find_element_by_name("address2").send_keys(contact.address2)
@@ -102,7 +100,7 @@ class ContactHelper:
         wd.find_elements_by_name("selected[]")[index].click()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to_alert().accept()
-        wd.find_elements_by_xpath("//*[contains(text(), 'Record successful deleted')]")
+        wd.find_element_by_css_selector("div.msgbox")
         self.return_to_home_page()
         self.contact_cache = None
 
@@ -139,3 +137,7 @@ class ContactHelper:
                 id = element.find_element_by_name("selected[]").get_attribute("value")
                 self.contact_cache.append(Contact(firstname=text[2].text, lastname=text[1].text, id=id))
             return list(self.contact_cache)
+
+    def check_exists_by_name(self, name):
+        wd = self.app.wd
+        return len(wd.find_elements_by_name(name)) > 0

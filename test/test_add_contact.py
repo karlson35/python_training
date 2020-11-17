@@ -9,7 +9,7 @@ def test_add_contact(app):
                        tel_home="tel_home", tel_mobile="tel_mobile", tel_work="tel_work", tel_fax="tel_fax",
                        email1="email1", email2="email2", email3="email3", homepage="homepage",
                        bday="12", bmonth="August", byear="1983", aday="14", amonth="October", ayear="2004",
-                       group="[none]", address2="secondary_address", phone2="secondary_phone",
+                       group="test", address2="secondary_address", phone2="secondary_phone",
                        notes="notes")
     app.contact.create(contact)
     assert len(old_contacts) + 1 == app.contact.count()
