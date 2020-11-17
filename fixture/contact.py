@@ -74,7 +74,6 @@ class ContactHelper:
         wd.find_element_by_name("ayear").send_keys(contact.ayear)
         if self.check_exists_by_name("new_group"):
             Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.group)
-            wd.find_element_by_xpath("//option[@value='[none]']")
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
         wd.find_element_by_name("address2").send_keys(contact.address2)
