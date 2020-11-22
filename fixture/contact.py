@@ -135,10 +135,11 @@ class ContactHelper:
             for element in wd.find_elements_by_name("entry"):
                 text = element.find_elements_by_tag_name("td")
                 id = element.find_element_by_name("selected[]").get_attribute("value")
-                all_phones = text[5].text.splitlines()
-                self.contact_cache.append(Contact(firstname=text[2].text, lastname=text[1].text, id=id,
-                                                  tel_home=all_phones[0], tel_mobile=all_phones[1],
-                                                  tel_work=all_phones[2], phone2=all_phones[3]))
+                all_phones = text[5].text
+                all_email = text[4].text
+                self.contact_cache.append(Contact(firstname=text[2].text, lastname=text[1].text, address=text[3].text,
+                                                  id=id, all_phones_from_home_page=all_phones,
+                                                  all_email_from_home_page=all_email))
             return list(self.contact_cache)
 
     def check_exists_by_name(self, name):
@@ -161,13 +162,18 @@ class ContactHelper:
         id = wd.find_element_by_name("id").get_attribute("value")
         firstname = wd.find_element_by_name("firstname").get_attribute("value")
         lastname = wd.find_element_by_name("lastname").get_attribute("value")
+        address = wd.find_element_by_name("address").get_attribute("value")
         tel_home = wd.find_element_by_name("home").get_attribute("value")
         tel_mobile = wd.find_element_by_name("mobile").get_attribute("value")
         tel_work = wd.find_element_by_name("work").get_attribute("value")
         tel_fax = wd.find_element_by_name("fax").get_attribute("value")
         phone2 = wd.find_element_by_name("phone2").get_attribute("value")
-        return Contact(firstname=firstname, lastname=lastname, tel_home=tel_home, tel_work=tel_work,
-                       tel_mobile=tel_mobile, tel_fax=tel_fax, phone2=phone2, id=id)
+        email1 = wd.find_element_by_name("email").get_attribute("value")
+        email2 = wd.find_element_by_name("email2").get_attribute("value")
+        email3 = wd.find_element_by_name("email3").get_attribute("value")
+        return Contact(firstname=firstname, lastname=lastname, address=address, tel_home=tel_home, tel_work=tel_work,
+                       tel_mobile=tel_mobile, tel_fax=tel_fax, phone2=phone2, email1=email1, email2=email2,
+                       email3=email3, id=id)
 
     def get_contact_from_view_page(self, index):
         wd = self.app.wd
