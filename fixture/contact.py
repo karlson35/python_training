@@ -66,10 +66,8 @@ class ContactHelper:
         wd.find_element_by_name("aday").click()
         Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.aday)
         wd.find_element_by_xpath("(//option[@value=" + contact.aday + "])[2]").click()
-        # Понятно, что дело в регистре contact.amonth, как починить не понятно, пока убираю
-        # wd.find_element_by_name("amonth").click()
-        # Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
-        # wd.find_element_by_xpath("(//option[@value='" + contact.amonth + "'])[2]").click()
+        wd.find_element_by_name("amonth").click()
+        Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
         wd.find_element_by_name("ayear").click()
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys(contact.ayear)
@@ -140,7 +138,7 @@ class ContactHelper:
                 self.contact_cache.append(Contact(firstname=text[2].text, lastname=text[1].text, address=text[3].text,
                                                   id=id, all_phones_from_home_page=all_phones,
                                                   all_email_from_home_page=all_email))
-            return list(self.contact_cache)
+        return list(self.contact_cache)
 
     def check_exists_by_name(self, name):
         wd = self.app.wd
