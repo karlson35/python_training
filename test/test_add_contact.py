@@ -16,12 +16,8 @@ def random_tel(maxlen):
     return "".join([random.choice(symbols) for i in range(maxlen)])
 
 
-# def test_random_group_name(app):
-#    s = app.group.get_group_list()
-#    s2 = []
-#    for i in range(len(s)):
-#        s2.append(s[i].name)
-#    return random.choice(s2)
+def test_random_group_name(app):
+    return random.choice(app.group.get_group_list()).name
 
 
 testdata = [Contact(firstname="", middlename="", lastname="", nickname="", title="", company="", address="",
