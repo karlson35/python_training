@@ -16,10 +16,6 @@ def random_tel(maxlen):
     return "".join([random.choice(symbols) for i in range(maxlen)])
 
 
-def test_random_group_name(app):
-    return random.choice(app.group.get_group_list()).name
-
-
 testdata = [Contact(firstname="", middlename="", lastname="", nickname="", title="", company="", address="",
                     tel_home="", tel_mobile="", tel_work="", tel_fax="", email1="", email2="", email3="", homepage="",
                     bday="", bmonth="-", byear="", aday="", amonth="-", ayear="", group="[none]", address2="",
@@ -34,7 +30,7 @@ testdata = [Contact(firstname="", middlename="", lastname="", nickname="", title
                        bday=str(random.randrange(31)), bmonth=random.choice(calendar.month_name[1:13]),
                        byear=random.randrange(1900, 2020), aday=str(random.randrange(31)),
                        amonth=random.choice(calendar.month_name[1:13]), ayear=random.randrange(1900, 2050),
-                       group="[none]", address2=random_string("address2", 10), phone2=random_tel(10),
+                       group="random", address2=random_string("address2", 10), phone2=random_tel(10),
                        notes=random_string("notes", 10))
                for i in range(5)
            ]
@@ -42,6 +38,8 @@ testdata = [Contact(firstname="", middlename="", lastname="", nickname="", title
 
 @pytest.mark.parametrize("contact", testdata, ids=[repr(x) for x in testdata])
 def test_add_contact(app, contact):
+    if contact.group == "random":
+        contact.group = random.choice(app.group.get_group_list()).name
     old_contacts = app.contact.get_contact_list()
     app.contact.create(contact)
     assert len(old_contacts) + 1 == app.contact.count()
