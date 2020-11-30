@@ -6,8 +6,8 @@ from data.contacts import testdata
 
 
 # @pytest.mark.parametrize("contact", testdata, ids=[repr(x) for x in testdata])
-def test_add_contact(app,  data_contacts):
-    contact = data_contacts
+def test_add_contact(app,  json_contacts):
+    contact = json_contacts
     if contact.group == "random":
         contact.group = random.choice(app.group.get_group_list()).name
     old_contacts = app.contact.get_contact_list()
