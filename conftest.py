@@ -38,8 +38,6 @@ def stop(request):
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="firefox")
     parser.addoption("--target", action="store", default="target.json")
-    parser.addoption("--username", action="store", default="target.json")
-    parser.addoption("--password", action="store", default="target.json")
 
 
 def pytest_generate_tests(metafunc):
