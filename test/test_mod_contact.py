@@ -47,5 +47,12 @@ def test_modify_some_contact(app, db, check_ui):
             tmp_contact.notes = contact.notes
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
     if check_ui:
-        assert sorted(new_contacts, key=Contact.id_or_max) == sorted(app.group.get_contact_list(),
-                                                                     key=Contact.id_or_max)
+        def clean(contact):
+            return Contact(id=contact.id, firstname=" ".join(contact.firstname.strip().split()),
+                           lastname=" ".join(contact.lastname.strip().split()),
+                           middlename=" ".join(contact.middlename.strip().split()),
+                           nickname=" ".join(contact.nickname.strip().split()),
+                           address=" ".join(contact.address.strip().split()))
+
+        db_list = list(map(clean, db.get_contact_list()))
+        assert sorted(db_list, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)

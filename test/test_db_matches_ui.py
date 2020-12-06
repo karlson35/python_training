@@ -17,7 +17,10 @@ def test_contact_list(app, db):
     ui_list = app.contact.get_contact_list()
 
     def clean(contact):
-        return Contact(id=contact.id, firstname=contact.firstname.strip(), lastname=contact.lastname.strip(),
-                       middlename=contact.middlename.strip(), nickname=contact.nickname.strip())
+        return Contact(id=contact.id, firstname=" ".join(contact.firstname.strip().split()),
+                       lastname=" ".join(contact.lastname.strip().split()),
+                       middlename=" ".join(contact.middlename.strip().split()),
+                       nickname=" ".join(contact.nickname.strip().split()),
+                       address=" ".join(contact.address.strip().split()))
     db_list = list(map(clean, db.get_contact_list()))
     assert sorted(ui_list, key=Contact.id_or_max) == sorted(db_list, key=Contact.id_or_max)
