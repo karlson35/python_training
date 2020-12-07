@@ -3,8 +3,6 @@ __author__ = 'Igor Nikolaev'
 import re
 from random import randrange
 
-from model.contact import Contact
-
 
 def test_phones_on_home_page(app):
     contact_from_home_page = app.contact.get_contact_list()[0]
