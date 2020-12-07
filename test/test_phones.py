@@ -1,6 +1,9 @@
 __author__ = 'Igor Nikolaev'
+
 import re
 from random import randrange
+
+from model.contact import Contact
 
 
 def test_phones_on_home_page(app):
@@ -31,15 +34,28 @@ def test_compare_some_contact_on_home_and_edit_pages(app):
     assert contact_from_home_page.all_email_from_home_page == merge_email_like_on_home_page(contact_from_edit_page)
 
 
+def test_compare_contacts_on_home_page_and_db(app, db):
+    contacts_from_home_page = app.contact.get_contact_list()
+    contacts_from_db = db.get_contact_list()
+    for i in range(len(contacts_from_home_page)):
+        assert clear(contacts_from_home_page[i].firstname) == clear(contacts_from_db[i].firstname)
+        assert clear(contacts_from_home_page[i].lastname) == clear(contacts_from_db[i].lastname)
+        assert clear(contacts_from_home_page[i].address) == clear(contacts_from_db[i].address)
+        assert clear(contacts_from_home_page[i].all_phones_from_home_page) == \
+               clear(merge_phones_like_on_home_page(contacts_from_db[i]))
+        assert clear(contacts_from_home_page[i].all_email_from_home_page) == \
+               clear(merge_email_like_on_home_page(contacts_from_db[i]))
+
+
 def clear(s):
     return re.sub("[() -]", "", s)
 
 
 def merge_phones_like_on_home_page(contact):
     return "\n".join(filter(lambda x: x != "",
-                             map(lambda x: clear(x),
-                                 filter(lambda x: x is not None,
-                                        [contact.tel_home, contact.tel_mobile, contact.tel_work, contact.phone2]))))
+                            map(lambda x: clear(x),
+                                filter(lambda x: x is not None,
+                                       [contact.tel_home, contact.tel_mobile, contact.tel_work, contact.phone2]))))
 
 
 def merge_email_like_on_home_page(contact):
@@ -47,4 +63,3 @@ def merge_email_like_on_home_page(contact):
                             map(lambda x: clear(x),
                                 filter(lambda x: x is not None,
                                        [contact.email1, contact.email2, contact.email3]))))
-
