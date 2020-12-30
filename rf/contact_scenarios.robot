@@ -19,7 +19,7 @@ Modify contact
     ${index}=  Evaluate  random.randrange(${len})  random
     ${contact}=  Get From List  ${old_list}  ${index}
     ${new_contact}=  New Contact  firstname_robot_modified  lastname_robot_modified
-    Modify Contact  ${contact}  ${new_contact}
+    Modify Contact  ${new_contact}  ${contact}
     ${new_list}=  Get Contact List
     Set List Value  ${old_list}  ${index}  ${new_contact}
     rf.AddressBook.Contact Lists Should Be Equal  ${old_list}  ${new_list}

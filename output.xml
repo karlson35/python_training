@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 2.9 (Python 3.9.0 on win32)" generated="20201230 16:53:38.268">
+<robot generator="Robot 2.9 (Python 3.9.0 on win32)" generated="20201230 17:33:45.417">
 <suite id="s1" name="Contact Scenarios" source="C:\GIT\python_training\rf\contact_scenarios.robot">
 <kw name="Init Fixtures" library="rf.AddressBook" type="setup">
-<status status="PASS" starttime="20201230 16:53:38.424" endtime="20201230 16:53:45.934"></status>
+<status status="PASS" starttime="20201230 17:33:45.578" endtime="20201230 17:33:53.047"></status>
 </kw>
 <test id="s1-t1" name="Add new contact">
 <kw name="Get Contact List" library="rf.AddressBook">
 <assign>
 <var>${old_list}</var>
 </assign>
-<msg timestamp="20201230 16:53:45.936" level="INFO">${old_list} = [9: , 10: , 11:firstname1_new lastname1_new, 12:firstnameOMK lastnamePV, 13:firstname9QG2N lastnamewgq , 14:firstnameVt4r8  R lastnameGy, 15:firstnamea lastnamea6, 17:firstname  dpWqC lastnameUkZT2sg6...</msg>
-<status status="PASS" starttime="20201230 16:53:45.934" endtime="20201230 16:53:45.936"></status>
+<msg timestamp="20201230 17:33:53.050" level="INFO">${old_list} = [43:firstname  dpWqC lastnameUkZT2sg6, 45:firstname9QG2N lastnamewgq , 47:firstnamea lastnamea6, 48:robot robot, 49:firstname_robot_modified lastname_robot_modified, 50:robot robot, 51:firstname_robot...</msg>
+<status status="PASS" starttime="20201230 17:33:53.048" endtime="20201230 17:33:53.050"></status>
 </kw>
 <kw name="New Contact" library="rf.AddressBook">
 <arguments>
@@ -20,25 +20,46 @@
 <assign>
 <var>${contact}</var>
 </assign>
-<msg timestamp="20201230 16:53:45.937" level="INFO">${contact} = None:firstname_robot lastname_robot</msg>
-<status status="PASS" starttime="20201230 16:53:45.936" endtime="20201230 16:53:45.937"></status>
+<msg timestamp="20201230 17:33:53.050" level="INFO">${contact} = None:firstname_robot lastname_robot</msg>
+<status status="PASS" starttime="20201230 17:33:53.050" endtime="20201230 17:33:53.050"></status>
 </kw>
 <kw name="Create Contact" library="rf.AddressBook">
 <arguments>
 <arg>${contact}</arg>
 </arguments>
-<msg timestamp="20201230 16:53:46.452" level="FAIL">TypeError: object of type 'NoneType' has no len()</msg>
-<status status="FAIL" starttime="20201230 16:53:45.937" endtime="20201230 16:53:46.452"></status>
+<status status="PASS" starttime="20201230 17:33:53.051" endtime="20201230 17:33:53.817"></status>
 </kw>
-<status status="FAIL" starttime="20201230 16:53:45.934" endtime="20201230 16:53:46.452" critical="yes">TypeError: object of type 'NoneType' has no len()</status>
+<kw name="Get Contact List" library="rf.AddressBook">
+<assign>
+<var>${new_list}</var>
+</assign>
+<msg timestamp="20201230 17:33:53.819" level="INFO">${new_list} = [43:firstname  dpWqC lastnameUkZT2sg6, 45:firstname9QG2N lastnamewgq , 47:firstnamea lastnamea6, 48:robot robot, 49:firstname_robot_modified lastname_robot_modified, 50:robot robot, 51:firstname_robot...</msg>
+<status status="PASS" starttime="20201230 17:33:53.817" endtime="20201230 17:33:53.819"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${contact}</arg>
+</arguments>
+<status status="PASS" starttime="20201230 17:33:53.819" endtime="20201230 17:33:53.819"></status>
+</kw>
+<kw name="Contact Lists Should Be Equal" library="rf.AddressBook">
+<arguments>
+<arg>${old_list}</arg>
+<arg>${new_list}</arg>
+</arguments>
+<status status="PASS" starttime="20201230 17:33:53.819" endtime="20201230 17:33:53.819"></status>
+</kw>
+<status status="PASS" starttime="20201230 17:33:53.047" endtime="20201230 17:33:53.820" critical="yes"></status>
 </test>
 <test id="s1-t2" name="Modify contact">
 <kw name="Get Contact List" library="rf.AddressBook">
 <assign>
 <var>${old_list}</var>
 </assign>
-<msg timestamp="20201230 16:53:46.456" level="INFO">${old_list} = [9: , 10: , 11:firstname1_new lastname1_new, 12:firstnameOMK lastnamePV, 13:firstname9QG2N lastnamewgq , 14:firstnameVt4r8  R lastnameGy, 15:firstnamea lastnamea6, 17:firstname  dpWqC lastnameUkZT2sg6...</msg>
-<status status="PASS" starttime="20201230 16:53:46.454" endtime="20201230 16:53:46.456"></status>
+<msg timestamp="20201230 17:33:53.822" level="INFO">${old_list} = [43:firstname  dpWqC lastnameUkZT2sg6, 45:firstname9QG2N lastnamewgq , 47:firstnamea lastnamea6, 48:robot robot, 49:firstname_robot_modified lastname_robot_modified, 50:robot robot, 51:firstname_robot...</msg>
+<status status="PASS" starttime="20201230 17:33:53.821" endtime="20201230 17:33:53.822"></status>
 </kw>
 <kw name="Get Length" library="BuiltIn">
 <doc>Returns and logs the length of the given item as an integer.</doc>
@@ -48,9 +69,9 @@
 <assign>
 <var>${len}</var>
 </assign>
-<msg timestamp="20201230 16:53:46.456" level="INFO">Length is 28</msg>
-<msg timestamp="20201230 16:53:46.456" level="INFO">${len} = 28</msg>
-<status status="PASS" starttime="20201230 16:53:46.456" endtime="20201230 16:53:46.456"></status>
+<msg timestamp="20201230 17:33:53.822" level="INFO">Length is 13</msg>
+<msg timestamp="20201230 17:33:53.822" level="INFO">${len} = 13</msg>
+<status status="PASS" starttime="20201230 17:33:53.822" endtime="20201230 17:33:53.822"></status>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <doc>Evaluates the given expression in Python and returns the results.</doc>
@@ -61,8 +82,8 @@
 <assign>
 <var>${index}</var>
 </assign>
-<msg timestamp="20201230 16:53:46.462" level="INFO">${index} = 21</msg>
-<status status="PASS" starttime="20201230 16:53:46.457" endtime="20201230 16:53:46.462"></status>
+<msg timestamp="20201230 17:33:53.826" level="INFO">${index} = 12</msg>
+<status status="PASS" starttime="20201230 17:33:53.823" endtime="20201230 17:33:53.826"></status>
 </kw>
 <kw name="Get From List" library="Collections">
 <doc>Returns the value specified with an ``index`` from ``list``.</doc>
@@ -73,8 +94,8 @@
 <assign>
 <var>${contact}</var>
 </assign>
-<msg timestamp="20201230 16:53:46.463" level="INFO">${contact} = 32:firstnameOMK lastnamePV</msg>
-<status status="PASS" starttime="20201230 16:53:46.462" endtime="20201230 16:53:46.463"></status>
+<msg timestamp="20201230 17:33:53.827" level="INFO">${contact} = 59:firstname_robot lastname_robot</msg>
+<status status="PASS" starttime="20201230 17:33:53.827" endtime="20201230 17:33:53.827"></status>
 </kw>
 <kw name="New Contact" library="rf.AddressBook">
 <arguments>
@@ -84,26 +105,48 @@
 <assign>
 <var>${new_contact}</var>
 </assign>
-<msg timestamp="20201230 16:53:46.463" level="INFO">${new_contact} = None:firstname_robot_modified lastname_robot_modified</msg>
-<status status="PASS" starttime="20201230 16:53:46.463" endtime="20201230 16:53:46.463"></status>
+<msg timestamp="20201230 17:33:53.828" level="INFO">${new_contact} = None:firstname_robot_modified lastname_robot_modified</msg>
+<status status="PASS" starttime="20201230 17:33:53.828" endtime="20201230 17:33:53.828"></status>
 </kw>
 <kw name="Modify Contact" library="rf.AddressBook">
 <arguments>
+<arg>${new_contact}</arg>
 <arg>${contact}</arg>
+</arguments>
+<status status="PASS" starttime="20201230 17:33:53.828" endtime="20201230 17:33:56.383"></status>
+</kw>
+<kw name="Get Contact List" library="rf.AddressBook">
+<assign>
+<var>${new_list}</var>
+</assign>
+<msg timestamp="20201230 17:33:56.386" level="INFO">${new_list} = [43:firstname  dpWqC lastnameUkZT2sg6, 45:firstname9QG2N lastnamewgq , 47:firstnamea lastnamea6, 48:robot robot, 49:firstname_robot_modified lastname_robot_modified, 50:robot robot, 51:firstname_robot...</msg>
+<status status="PASS" starttime="20201230 17:33:56.384" endtime="20201230 17:33:56.386"></status>
+</kw>
+<kw name="Set List Value" library="Collections">
+<doc>Sets the value of ``list`` specified by ``index`` to the given ``value``.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${index}</arg>
 <arg>${new_contact}</arg>
 </arguments>
-<msg timestamp="20201230 16:53:47.000" level="FAIL">TypeError: object of type 'NoneType' has no len()</msg>
-<status status="FAIL" starttime="20201230 16:53:46.463" endtime="20201230 16:53:47.000"></status>
+<status status="PASS" starttime="20201230 17:33:56.386" endtime="20201230 17:33:56.386"></status>
 </kw>
-<status status="FAIL" starttime="20201230 16:53:46.454" endtime="20201230 16:53:47.000" critical="yes">TypeError: object of type 'NoneType' has no len()</status>
+<kw name="Contact Lists Should Be Equal" library="rf.AddressBook">
+<arguments>
+<arg>${old_list}</arg>
+<arg>${new_list}</arg>
+</arguments>
+<status status="PASS" starttime="20201230 17:33:56.387" endtime="20201230 17:33:56.387"></status>
+</kw>
+<status status="PASS" starttime="20201230 17:33:53.820" endtime="20201230 17:33:56.387" critical="yes"></status>
 </test>
 <test id="s1-t3" name="Delete contact">
 <kw name="Get Contact List" library="rf.AddressBook">
 <assign>
 <var>${old_list}</var>
 </assign>
-<msg timestamp="20201230 16:53:47.004" level="INFO">${old_list} = [9: , 10: , 11:firstname1_new lastname1_new, 12:firstnameOMK lastnamePV, 13:firstname9QG2N lastnamewgq , 14:firstnameVt4r8  R lastnameGy, 15:firstnamea lastnamea6, 17:firstname  dpWqC lastnameUkZT2sg6...</msg>
-<status status="PASS" starttime="20201230 16:53:47.002" endtime="20201230 16:53:47.004"></status>
+<msg timestamp="20201230 17:33:56.390" level="INFO">${old_list} = [43:firstname  dpWqC lastnameUkZT2sg6, 45:firstname9QG2N lastnamewgq , 47:firstnamea lastnamea6, 48:robot robot, 49:firstname_robot_modified lastname_robot_modified, 50:robot robot, 51:firstname_robot...</msg>
+<status status="PASS" starttime="20201230 17:33:56.389" endtime="20201230 17:33:56.390"></status>
 </kw>
 <kw name="Get Length" library="BuiltIn">
 <doc>Returns and logs the length of the given item as an integer.</doc>
@@ -113,9 +156,9 @@
 <assign>
 <var>${len}</var>
 </assign>
-<msg timestamp="20201230 16:53:47.004" level="INFO">Length is 28</msg>
-<msg timestamp="20201230 16:53:47.004" level="INFO">${len} = 28</msg>
-<status status="PASS" starttime="20201230 16:53:47.004" endtime="20201230 16:53:47.004"></status>
+<msg timestamp="20201230 17:33:56.391" level="INFO">Length is 13</msg>
+<msg timestamp="20201230 17:33:56.391" level="INFO">${len} = 13</msg>
+<status status="PASS" starttime="20201230 17:33:56.390" endtime="20201230 17:33:56.391"></status>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <doc>Evaluates the given expression in Python and returns the results.</doc>
@@ -126,8 +169,8 @@
 <assign>
 <var>${index}</var>
 </assign>
-<msg timestamp="20201230 16:53:47.005" level="INFO">${index} = 11</msg>
-<status status="PASS" starttime="20201230 16:53:47.004" endtime="20201230 16:53:47.005"></status>
+<msg timestamp="20201230 17:33:56.391" level="INFO">${index} = 4</msg>
+<status status="PASS" starttime="20201230 17:33:56.391" endtime="20201230 17:33:56.391"></status>
 </kw>
 <kw name="Get From List" library="Collections">
 <doc>Returns the value specified with an ``index`` from ``list``.</doc>
@@ -138,21 +181,21 @@
 <assign>
 <var>${contact}</var>
 </assign>
-<msg timestamp="20201230 16:53:47.005" level="INFO">${contact} = 22:firstname1_new lastname1_new</msg>
-<status status="PASS" starttime="20201230 16:53:47.005" endtime="20201230 16:53:47.005"></status>
+<msg timestamp="20201230 17:33:56.392" level="INFO">${contact} = 49:firstname_robot_modified lastname_robot_modified</msg>
+<status status="PASS" starttime="20201230 17:33:56.392" endtime="20201230 17:33:56.392"></status>
 </kw>
 <kw name="Delete Contact" library="rf.AddressBook">
 <arguments>
 <arg>${contact}</arg>
 </arguments>
-<status status="PASS" starttime="20201230 16:53:47.005" endtime="20201230 16:53:47.914"></status>
+<status status="PASS" starttime="20201230 17:33:56.392" endtime="20201230 17:33:56.881"></status>
 </kw>
 <kw name="Get Contact List" library="rf.AddressBook">
 <assign>
 <var>${new_list}</var>
 </assign>
-<msg timestamp="20201230 16:53:47.916" level="INFO">${new_list} = [9: , 10: , 11:firstname1_new lastname1_new, 12:firstnameOMK lastnamePV, 13:firstname9QG2N lastnamewgq , 14:firstnameVt4r8  R lastnameGy, 15:firstnamea lastnamea6, 17:firstname  dpWqC lastnameUkZT2sg6...</msg>
-<status status="PASS" starttime="20201230 16:53:47.914" endtime="20201230 16:53:47.917"></status>
+<msg timestamp="20201230 17:33:56.883" level="INFO">${new_list} = [43:firstname  dpWqC lastnameUkZT2sg6, 45:firstname9QG2N lastnamewgq , 47:firstnamea lastnamea6, 48:robot robot, 50:robot robot, 51:firstname_robot_modified lastname_robot_modified, 52:firstname_robot...</msg>
+<status status="PASS" starttime="20201230 17:33:56.881" endtime="20201230 17:33:56.883"></status>
 </kw>
 <kw name="Remove Values From List" library="Collections">
 <doc>Removes all occurrences of given ``values`` from ``list``.</doc>
@@ -160,31 +203,31 @@
 <arg>${old_list}</arg>
 <arg>${contact}</arg>
 </arguments>
-<status status="PASS" starttime="20201230 16:53:47.917" endtime="20201230 16:53:47.917"></status>
+<status status="PASS" starttime="20201230 17:33:56.883" endtime="20201230 17:33:56.884"></status>
 </kw>
 <kw name="Contact Lists Should Be Equal" library="rf.AddressBook">
 <arguments>
 <arg>${old_list}</arg>
 <arg>${new_list}</arg>
 </arguments>
-<status status="PASS" starttime="20201230 16:53:47.917" endtime="20201230 16:53:47.917"></status>
+<status status="PASS" starttime="20201230 17:33:56.884" endtime="20201230 17:33:56.884"></status>
 </kw>
-<status status="PASS" starttime="20201230 16:53:47.002" endtime="20201230 16:53:47.918" critical="yes"></status>
+<status status="PASS" starttime="20201230 17:33:56.388" endtime="20201230 17:33:56.884" critical="yes"></status>
 </test>
 <kw name="Destroy Fixtures" library="rf.AddressBook" type="teardown">
-<status status="PASS" starttime="20201230 16:53:47.918" endtime="20201230 16:53:49.804"></status>
+<status status="PASS" starttime="20201230 17:33:56.885" endtime="20201230 17:33:58.954"></status>
 </kw>
-<status status="FAIL" starttime="20201230 16:53:38.272" endtime="20201230 16:53:49.804"></status>
+<status status="PASS" starttime="20201230 17:33:45.422" endtime="20201230 17:33:58.954"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="2">Critical Tests</stat>
-<stat pass="1" fail="2">All Tests</stat>
+<stat pass="3" fail="0">Critical Tests</stat>
+<stat pass="3" fail="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="2" id="s1" name="Contact Scenarios">Contact Scenarios</stat>
+<stat pass="3" fail="0" id="s1" name="Contact Scenarios">Contact Scenarios</stat>
 </suite>
 </statistics>
 <errors>

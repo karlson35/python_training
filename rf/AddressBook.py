@@ -3,6 +3,8 @@ __author__ = 'Igor Nikolaev'
 
 import json
 import os.path
+import time
+
 from fixture.application import Application
 from model.contact import Contact
 from model.group import Group
@@ -55,7 +57,7 @@ class AddressBook:
     def delete_contact(self, contact):
         self.fixture.contact.delete_contact_by_id(contact.id)
 
-    def modify_contact(self, contact, new_contact):
+    def modify_contact(self, new_contact, contact):
         self.fixture.contact.modify_contact_by_id(new_contact, contact.id)
 
     def group_lists_should_be_equal(self, list1, list2):

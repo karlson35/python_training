@@ -21,7 +21,7 @@ class ContactHelper:
         if contact.firstname is not None:
             wd.find_element_by_name("firstname").clear()
             wd.find_element_by_name("firstname").send_keys(contact.firstname)
-        if contact.firstname is not None:
+        if contact.middlename is not None:
             wd.find_element_by_name("middlename").clear()
             wd.find_element_by_name("middlename").send_keys(contact.middlename)
         if contact.lastname is not None:
