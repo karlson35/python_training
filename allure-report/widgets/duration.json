@@ -1,0 +1,61 @@
+[ {
+  "uid" : "e7753fd55ab203db",
+  "name" : "test_add_contact[None:firstnameOMK lastnamePV]",
+  "time" : {
+    "start" : 1609330378344,
+    "stop" : 1609330380765,
+    "duration" : 2421
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "6da93d61abe2151e",
+  "name" : "test_add_contact[None:firstnameVt4r8  R lastnameGy]",
+  "time" : {
+    "start" : 1609330384571,
+    "stop" : 1609330386966,
+    "duration" : 2395
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "1aca4d73ed6ded99",
+  "name" : "test_add_contact[None:firstname  dpWqC lastnameUkZT2sg6]",
+  "time" : {
+    "start" : 1609330375140,
+    "stop" : 1609330377724,
+    "duration" : 2584
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a3c2e8c1cd465aac",
+  "name" : "test_add_contact[None:firstname9QG2N lastnamewgq ]",
+  "time" : {
+    "start" : 1609330381391,
+    "stop" : 1609330383902,
+    "duration" : 2511
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "f7fe515cd00c2088",
+  "name" : "test_add_contact[None: ]",
+  "time" : {
+    "start" : 1609330373080,
+    "stop" : 1609330374506,
+    "duration" : 1426
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e9626f1279ae8d1",
+  "name" : "test_add_contact[None:firstnamea lastnamea6]",
+  "time" : {
+    "start" : 1609330387622,
+    "stop" : 1609330389981,
+    "duration" : 2359
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]
