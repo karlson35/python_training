@@ -18,65 +18,77 @@ class ContactHelper:
 
     def fill_contact_information(self, contact):
         wd = self.app.wd
-        wd.find_element_by_name("firstname").click()
-        wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(contact.firstname)
-        wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys(contact.middlename)
-        wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(contact.lastname)
-        wd.find_element_by_name("nickname").click()
-        wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys(contact.nickname)
-        wd.find_element_by_name("title").click()
-        wd.find_element_by_name("title").clear()
-        wd.find_element_by_name("title").send_keys(contact.title)
-        wd.find_element_by_name("company").click()
-        wd.find_element_by_name("company").clear()
-        wd.find_element_by_name("company").send_keys(contact.company)
-        wd.find_element_by_name("address").click()
-        wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys(contact.address)
-        wd.find_element_by_name("home").click()
-        wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(contact.tel_home)
-        wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys(contact.tel_mobile)
-        wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys(contact.tel_work)
-        wd.find_element_by_name("fax").clear()
-        wd.find_element_by_name("fax").send_keys(contact.tel_fax)
-        wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys(contact.email1)
-        wd.find_element_by_name("email2").clear()
-        wd.find_element_by_name("email2").send_keys(contact.email2)
-        wd.find_element_by_name("email3").clear()
-        wd.find_element_by_name("email3").send_keys(contact.email3)
-        wd.find_element_by_name("homepage").clear()
-        wd.find_element_by_name("homepage").send_keys(contact.homepage)
-        wd.find_element_by_name("bday").click()
-        Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.bday)
-        wd.find_element_by_name("bmonth").click()
-        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.bmonth)
-        wd.find_element_by_name("byear").click()
-        wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys(contact.byear)
-        wd.find_element_by_name("aday").click()
-        Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.aday)
-        wd.find_element_by_name("amonth").click()
-        Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
-        wd.find_element_by_name("ayear").click()
-        wd.find_element_by_name("ayear").clear()
-        wd.find_element_by_name("ayear").send_keys(contact.ayear)
+        if contact.firstname is not None:
+            wd.find_element_by_name("firstname").clear()
+            wd.find_element_by_name("firstname").send_keys(contact.firstname)
+        if contact.firstname is not None:
+            wd.find_element_by_name("middlename").clear()
+            wd.find_element_by_name("middlename").send_keys(contact.middlename)
+        if contact.lastname is not None:
+            wd.find_element_by_name("lastname").clear()
+            wd.find_element_by_name("lastname").send_keys(contact.lastname)
+        if contact.nickname is not None:
+            wd.find_element_by_name("nickname").clear()
+            wd.find_element_by_name("nickname").send_keys(contact.nickname)
+        if contact.title is not None:
+            wd.find_element_by_name("title").clear()
+            wd.find_element_by_name("title").send_keys(contact.title)
+        if contact.company is not None:
+            wd.find_element_by_name("company").clear()
+            wd.find_element_by_name("company").send_keys(contact.company)
+        if contact.address is not None:
+            wd.find_element_by_name("address").clear()
+            wd.find_element_by_name("address").send_keys(contact.address)
+        if contact.tel_home is not None:
+            wd.find_element_by_name("home").clear()
+            wd.find_element_by_name("home").send_keys(contact.tel_home)
+        if contact.tel_mobile is not None:
+            wd.find_element_by_name("mobile").clear()
+            wd.find_element_by_name("mobile").send_keys(contact.tel_mobile)
+        if contact.tel_work is not None:
+            wd.find_element_by_name("work").clear()
+            wd.find_element_by_name("work").send_keys(contact.tel_work)
+        if contact.tel_fax is not None:
+            wd.find_element_by_name("fax").clear()
+            wd.find_element_by_name("fax").send_keys(contact.tel_fax)
+        if contact.email1 is not None:
+            wd.find_element_by_name("email").clear()
+            wd.find_element_by_name("email").send_keys(contact.email1)
+        if contact.email2 is not None:
+            wd.find_element_by_name("email2").clear()
+            wd.find_element_by_name("email2").send_keys(contact.email2)
+        if contact.email3 is not None:
+            wd.find_element_by_name("email3").clear()
+            wd.find_element_by_name("email3").send_keys(contact.email3)
+        if contact.homepage is not None:
+            wd.find_element_by_name("homepage").clear()
+            wd.find_element_by_name("homepage").send_keys(contact.homepage)
+        if contact.bday is not None:
+            Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.bday)
+        if contact.bmonth is not None:
+            Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.bmonth)
+        if contact.byear is not None:
+            wd.find_element_by_name("byear").clear()
+            wd.find_element_by_name("byear").send_keys(contact.byear)
+        if contact.aday is not None:
+            Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.aday)
+        if contact.amonth is not None:
+            Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
+        if contact.ayear is not None:
+            wd.find_element_by_name("ayear").clear()
+            wd.find_element_by_name("ayear").send_keys(contact.ayear)
         if self.check_exists_by_name("new_group"):
-            Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.group)
-        wd.find_element_by_name("address2").click()
-        wd.find_element_by_name("address2").clear()
-        wd.find_element_by_name("address2").send_keys(contact.address2)
-        wd.find_element_by_name("phone2").clear()
-        wd.find_element_by_name("phone2").send_keys(contact.phone2)
-        wd.find_element_by_name("notes").clear()
-        wd.find_element_by_name("notes").send_keys(contact.notes)
+            if contact.group is not None:
+                Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.group)
+        if contact.address2 is not None:
+            wd.find_element_by_name("address2").clear()
+            wd.find_element_by_name("address2").send_keys(contact.address2)
+        if contact.phone2 is not None:
+            wd.find_element_by_name("phone2").clear()
+            wd.find_element_by_name("phone2").send_keys(contact.phone2)
+        if contact.notes is not None:
+            wd.find_element_by_name("notes").clear()
+            wd.find_element_by_name("notes").send_keys(contact.notes)
 
     def create(self, contact):
         wd = self.app.wd

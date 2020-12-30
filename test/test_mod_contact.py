@@ -1,4 +1,7 @@
 __author__ = 'Igor Nikolaev'
+
+import time
+
 from model.contact import Contact
 import random
 
